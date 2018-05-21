@@ -5,29 +5,224 @@
 <html>
 <head>
 	<meta charset="utf-8">
-		<title>不知道什么鬼商城(゜-゜)つロ 干杯~-pipala</title>
-		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<title>不知道是什么鬼╭(′▽`)╯pipala</title>
+		<link rel="stylesheet" type="text/css" href="css/style2.css">
 </head>
 <body>
 	<div class="top">
 		<div class="con">
 			</!--列表--!/>
 			<div class="nav">
-				<a href="#">Beta商城</a><span class="shu">|</span>
+				<a href="#">BetaNyaplus</a><span class="shu">|</span>
 				<a href="#">BEACT</a><span class="shu">|</span>
 				<a href="#">Game</a>
 			</div>
-			<!--购物车--!>
+			<!--个人中心--!>
 			<div class="nav-cart">
-				<a href="#"><span></span>√&nbsp购物车</a>
+				<a href="#"><span></span>&nbsp账户中心</a>
 			</div>
 			</!--登录--!/>
 			<div class="nav-denglu">
-				<a href="#">登录</a><span class="shu">|</span>
+				<a onclick="myFunction()">登录</a><span class="shu">|</span>
+				
+				<a id="demo"></a>
+			
 				<a href="#">注册</a><span class="shu">|</span>
 				<a href="#">消息通知</a>
 			</div>		
 		</div>
 	</div>
+	
+	<div class="top2">
+		<div class="con">
+		<!--logo--!>
+			<div class="logo">
+				<a href="#"><img src="images/huaji.gif"></a>
+			</div>			
+			<!--列表--!>
+			<div class="navs">
+				<ul>
+					<li><a href="#">什么吉尔</a></li>
+					<li><a href="#">你说什么</a></li>
+					<li><a href="#">我听不到</a></li>
+				</ul>
+				<div class="logo2">
+					<a href="#"><img src="images/gsd.gif"></a>
+				</div>
+			</div>
+			
+			<!--搜索框--!>
+			<div class="search">
+				<input type="text" class="text" placeholder="这里什么都没有"><!--value="87444"--!><input type="button" onclick="show_confirm()" class="btn" value=" "/><!--tybe类型submit发送--!>
+			</div>
+			
+		</div>
+	</div>
+	<div class="play">
+		<!--图片--!>
+		<div class="pic">
+			<img src="images/image1.png">
+			<img src="images/image2.png">
+			<img src="images/image3.png">
+			<img src="images/image4.png">
+			<img src="images/image5.png">
+		</div>
+		<!--列表小圆点--!>
+		<div class="list">
+			<ul>
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>			
+	</div>
+	<!--箭头--!>
+	<div class="JT">
+			<ul class="L">
+				<li>
+				<a>&nbsp;</a>
+			</li>
+			</ul>
+
+			<ul class="R">
+				<li>
+				<a>&nbsp;</a>
+				</li>
+			</ul>
+	</div>
+	
+	
+	<!--正文--!>
+	<div class="ZW">
+		<div class="ZC">
+			<a></a>
+		
+		
+		
+		</div>
+	
+	
+
+	</div>
+		
+		
+	<script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+	<script type="text/javascript" src="js/jquery.plusGallery.js"></script>
+	<script type="text/javascript">
+		var time=0;
+		timeplay=null;
+	
+	
+		//alert(23333);
+		$(".play .list ul li").mouseover(function(){//鼠标浮动位置到class标签
+		clearInterval(timeplay);//清除时钟
+		index=$(this).index();//获取序号
+		//alert(index);//显示提示
+		$(this).addClass("active").siblings().removeClass("active");//添加标签效果,并且独立此标签效果不受到remove影响，去掉Class效果
+		$(".play .pic img").eq(index).show().siblings(".play .pic img").hide();
+		
+		}).mouseout(function(){
+			aa();
+		});
+		
+		//自定义function
+		
+		aa();
+		function aa(){
+			//alert("什么鬼")
+			//设置时钟
+			timeplay=setInterval(function(){
+				time++;
+				//alert(time);
+				
+				if (time<5){
+					$(".play ul li").eq(time).addClass("active").siblings().removeClass("active");
+					$(".play .pic img").eq(time).show().siblings("img").hide();
+				}else{
+					time=-1;
+				}
+				
+				
+				
+			},1000);
+		}
+		
+		//左切换
+		$(".JT .L li").click(function(){
+			
+			time --;
+			if (time>=0){
+				$(".play .list ul li").eq(time).addClass("active").siblings().removeClass("active");
+				$(".play .pic img").eq(time).show().siblings(".play .pic img").hide();
+				
+			}else{
+				time=5;
+				$("..play .list ul li").eq(time=4).addClass("active").siblings().removeClass("active");
+				$(".play .pic img").eq(time=4).show().siblings(".play .pic img").hide();
+			}
+		});
+		//鼠标放箭头上 停止轮播
+		$(".JT .L li").mouseover(function(){
+			clearInterval(timeplay);
+		}).mouseout(function(){
+			aa();
+		});
+		
+
+		
+		
+		//右切换
+		$(".JT .R li").click(function(){
+			
+			time ++;
+			if (time<=4){
+				$(".play .list ul li").eq(time).addClass("active").siblings().removeClass("active");
+				$(".play .pic img").eq(time).show().siblings(".play .pic img").hide();
+			}else{
+				time=-1;
+				$(".play .list ul li").eq(time=0).addClass("active").siblings().removeClass("active");
+				$(".play .pic .img").eq(time=0).show().siblings(".play .pic img").hide();
+			}
+		});
+		
+		//鼠标放箭头上 停止轮播
+			$(".JT .R li").mouseover(function(){
+			clearInterval(timeplay);
+		}).mouseout(function(){
+			aa();
+		});
+		
+		
+		//登录输入框
+		function myFunction(){
+			var x;
+			var person=prompt("请输入你的名字","我是一个没有感情的鸽子");
+			if (person!=null && person!=""){
+				x="你好 " + person + "! 今天吃药了吗?";
+				document.getElementById("demo").innerHTML=x;
+				
+			}
+		}
+		
+		//搜索输入框
+		function show_confirm()
+			{
+			var r=confirm("⚠提示！您已经获得跟我一起睡觉的机会，是否领取？");
+			if (r==true)
+			{
+			alert("w(ﾟДﾟ)w");
+			}
+			else
+			{
+			alert("(ˉ▽￣～) 切~~");
+			}
+	}
+
+
+		
+	</script>
+	
 </body>
 </html>
